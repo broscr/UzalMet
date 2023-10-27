@@ -1,18 +1,10 @@
-## Getting Started
+## UZALMET 2023
 
-First, run the development server:
+ULUSLARARASI KATILIMLI
 
-```bash
-npm install
+V. METEOROLOJİK UZAKTAN ALGILAMA SEMPOZYUMU
 
-npm run dev
-```
-
-```code
-- 17130 Ankara Bölge lat: 39.9727   lon: 32.8637 Step iklimi ve Karadeniz iklimi
-- 17064 İstanbul Bölge lat: 40.911	 lon: 29.1558 Karadeniz ile Akdeniz arasında bir geçiş iklimi
-- 17220 İzmir Bölge lat: 38.3949	lon: 27.0819 Akdeniz iklimi
-```
+14-17 KASIM 2023
 
 ---
 
@@ -28,3 +20,19 @@ Açıklamalar
 
 - Rıdvan AKTEPE
 - Zikri ÖZTAŞ
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm install
+
+npm run dev
+```
+
+```code
+- 17130 Ankara Bölge lat: 39.9727   lon: 32.8637 Step iklimi ve Karadeniz iklimi
+- 17064 İstanbul Bölge lat: 40.911	 lon: 29.1558 Karadeniz ile Akdeniz arasında bir geçiş iklimi
+- 17220 İzmir Bölge lat: 38.3949	lon: 27.0819 Akdeniz iklimi
+```
