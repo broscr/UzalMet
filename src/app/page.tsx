@@ -1,4 +1,6 @@
 import MyChart from "@/components/MyChart";
+import Data from "@/resources/Data";
+import { LatLon, dateToSeason } from "@/utils/Utils";
 
 export default function Home() {
   return (
