@@ -1,10 +1,7 @@
 import { ILighting, IRain } from "@/interfaces/Interfaces";
 import moment from "moment";
-
-export const pixelValue = (scale: any, v: any) => {
-  const val = scale.getValueForPixel(v);
-  return Math.trunc(isNaN(val) ? v * 6 : 3);
-};
+import fs from "fs";
+import { Parser } from "@json2csv/plainjs";
 
 export type CsvType = {
   Tarih: string;
@@ -14,23 +11,25 @@ export type CsvType = {
   YildirimAdeti: number;
 };
 
-export const LatLon = {
-  ankara: [39.9727, 32.8637],
-  istanbul: [40.911, 29.1558],
-  izmir: [38.3949, 27.0819],
-};
-
-export enum SEASON {
+enum SEASON {
   SPRING = "Spring",
   SUMMER = "Summer",
   AUTUMIN = "Autumin",
   WINTER = "Winter",
 }
 
+export const LatLon = {
+  ankara: [39.9727, 32.8637],
+  istanbul: [40.911, 29.1558],
+  izmir: [38.3949, 27.0819],
+};
+
 export const dateToSeason = (
   latLon: number[],
   jsonRain: IRain[],
-  jsonLighting: ILighting[]
+  jsonLighting: ILighting[],
+  city: string,
+  year: string
 ) => {
   const spring: CsvType[] = [];
   const summer: CsvType[] = [];
@@ -65,5 +64,29 @@ export const dateToSeason = (
     }
   });
 
-  return { spring, summer, autumin, winter };
+  writeFileJson(city, year, SEASON.SPRING, spring, true);
+  writeFileJson(city, year, SEASON.SUMMER, summer, true);
+  writeFileJson(city, year, SEASON.AUTUMIN, autumin, true);
+  writeFileJson(city, year, SEASON.WINTER, winter, true);
+};
+
+const writeFileJson = (
+  city: string,
+  year: string,
+  season: SEASON,
+  array: any[],
+  isCsv?: boolean
+) => {
+  let dataMan = "";
+
+  if (isCsv) {
+    const parser = new Parser();
+    dataMan = parser.parse(array);
+  }
+
+  fs.writeFileSync(
+    `./${city}${year}${season}.${isCsv ? "csv" : "json"}`,
+    isCsv ? dataMan : JSON.stringify(array),
+    "utf8"
+  );
 };

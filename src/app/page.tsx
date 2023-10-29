@@ -1,6 +1,4 @@
-import MyChart from "@/components/MyChart";
-import Data from "@/resources/Data";
-import { LatLon, dateToSeason } from "@/utils/Utils";
+import DataLayer from "@/components/DataLayer";
 
 export default function Home() {
   return (
@@ -9,7 +7,7 @@ export default function Home() {
         <p className="mt-2">
           Yıldırım Aktivitesi ve Şiddetli Yağışlar Arasındaki İlişkinin Analizi
         </p>
-        <MyChart />
+        <DataLayer />
       </div>
     </main>
   );
