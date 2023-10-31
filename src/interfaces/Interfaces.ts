@@ -1,7 +1,11 @@
 export interface IRain {
-  TOP_YAGIS_0606: number;
-  TARIH: string;
+  TOPLAM_YAGIS: number;
+  YIL: number;
+  AY: number;
+  GUN: number;
+  SAAT: number;
   DATATARIH: number;
+  ISTNO: number;
 }
 
 export interface ILighting {
@@ -9,4 +13,17 @@ export interface ILighting {
   FLASHTIP: number;
   SENSORSAYISI: number;
   DATATARIH: string;
+  LIGHTENLEM: number;
+  LIGHTBOYLAM: number;
 }
+
+export type Props = {
+  rain: IRain[];
+  lighting: ILighting[];
+  latitude: number;
+  longitude: number;
+  station: string;
+  city: string;
+  date: string;
+  no: number;
+};

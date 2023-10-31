@@ -23,3 +23,13 @@ canvas {
 select {
   border: 1px solid royalblue !important;
 }
+
+.viewSwitch{
+  float: right;
+  margin-right: 100px;
+}
+
+.selectView {
+  width: auto;
+  text-align: center;
+}

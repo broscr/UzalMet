@@ -6,6 +6,25 @@ export const pixelValue = (scale: any, v: any) => {
   return Math.trunc(isNaN(val) ? v * 6 : 3);
 };
 
+export const numberToDate = (date: number) => {
+  const dateString = moment(date.toString(), "YYYYMMDDHH").format(
+    "YYYY-MM-DD HH:mm"
+  );
+  return dateString;
+};
+
+export const dateToNumber = (date: string, format?: string) => {
+  const dateString = moment(date, format).format("YYYY-MM-DD HH");
+
+  const dateNumber = moment(dateString).toDate().getTime();
+
+  return dateNumber;
+};
+
+export const dateFormat = (date: string) => {
+  return moment(date).format("yyyy-MM-DD HH:mm");
+};
+
 export type CsvType = {
   Tarih: string;
   Enlem: number;
