@@ -1,6 +1,10 @@
 import DataLayer from "@/components/DataLayer";
+import Data from "@/utils/DataUtils";
+import { writeFile } from "@/utils/ServerUtils";
 
 export default function Home() {
+  // writeFile(Data.orduB._2019);
+
   return (
     <main>
       <div>

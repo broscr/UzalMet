@@ -1,7 +1,8 @@
-import { ILighting, IRain } from "@/interfaces/Interfaces";
+import { ILighting, IRain, Props } from "@/interfaces/Interfaces";
 import moment from "moment";
 import fs from "fs";
 import { Parser } from "@json2csv/plainjs";
+import { numberToDate } from "./Utils";
 
 export type CsvType = {
   Tarih: string;
@@ -11,82 +12,60 @@ export type CsvType = {
   YildirimAdeti: number;
 };
 
-enum SEASON {
-  SPRING = "Spring",
-  SUMMER = "Summer",
-  AUTUMIN = "Autumin",
-  WINTER = "Winter",
-}
-
 export const LatLon = {
   ankara: [39.9727, 32.8637],
   istanbul: [40.911, 29.1558],
   izmir: [38.3949, 27.0819],
 };
 
-export const dateToSeason = (
+export const dateToCsvType = (
   latLon: number[],
   jsonRain: IRain[],
   jsonLighting: ILighting[],
   city: string,
   year: string
 ) => {
-  const spring: CsvType[] = [];
-  const summer: CsvType[] = [];
-  const autumin: CsvType[] = [];
-  const winter: CsvType[] = [];
-
   const pushData = (item: IRain) => {
     return {
-      Tarih: moment(item.TARIH).format("DD.MM.YYYY HH:mm").toString(),
+      Tarih: moment(item.DATATARIH).format("DD.MM.YYYY HH:mm").toString(),
       Enlem: latLon[0],
       Boylam: latLon[1],
-      YagisMiktari: item.TOP_YAGIS_0606,
+      YagisMiktari: item.TOPLAM_YAGIS,
       YildirimAdeti: jsonLighting.filter(
         (i) =>
           moment(i.DATATARIH).format("DDMMYYYY").toString() ==
-          moment(item.TARIH).format("DDMMYYYY").toString()
+          moment(item.DATATARIH).format("DDMMYYYY").toString()
       ).length,
     };
   };
-
-  jsonRain.forEach((item) => {
-    const month = moment(item.TARIH).month();
-
-    if (month === 11 || month === 0 || month === 1) {
-      winter.push(pushData(item));
-    } else if (month === 2 || month === 3 || month === 4) {
-      spring.push(pushData(item));
-    } else if (month === 5 || month === 6 || month === 7) {
-      summer.push(pushData(item));
-    } else {
-      autumin.push(pushData(item));
-    }
-  });
-
-  writeFileJson(city, year, SEASON.SPRING, spring, true);
-  writeFileJson(city, year, SEASON.SUMMER, summer, true);
-  writeFileJson(city, year, SEASON.AUTUMIN, autumin, true);
-  writeFileJson(city, year, SEASON.WINTER, winter, true);
 };
 
-const writeFileJson = (
-  city: string,
-  year: string,
-  season: SEASON,
-  array: any[],
-  isCsv?: boolean
-) => {
+export const writeFile = (props: Props) => {
   let dataMan = "";
 
-  if (isCsv) {
-    const parser = new Parser();
-    dataMan = parser.parse(array);
-  }
+  const array: any = [];
 
-  fs.writeFileSync(
-    `./${city}${year}${season}.${isCsv ? "csv" : "json"}`,
-    isCsv ? dataMan : JSON.stringify(array),
-    "utf8"
-  );
+  props.rain.forEach((i) => {
+    array.push({
+      stationNo: props.no,
+      stationName: props.station,
+      stationCity: props.city,
+      date: props.date,
+      latitude: props.latitude,
+      longitude: props.longitude,
+      day: props.date,
+      hours: i.SAAT,
+      totalRain: i.TOPLAM_YAGIS.toFixed(1).replace(".", ","),
+      totalLighting: props.lighting.filter((it) => {
+        const itemDate = new Date(it.DATATARIH);
+        const itemHour = itemDate.getHours();
+        return itemHour === new Date(numberToDate(i.DATATARIH)).getHours();
+      }).length,
+    });
+  });
+
+  const parser = new Parser();
+  dataMan = parser.parse(array);
+
+  fs.writeFileSync(`./${props.date}_${props.no}.csv`, dataMan, "utf8");
 };
