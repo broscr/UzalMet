@@ -12,7 +12,8 @@ type Options = {
 };
 
 const DataLayer = () => {
-  const { adanaA, adanaB, istanbulA, istanbulB, orduA, orduB } = DataUtils;
+  const { adanaA, adanaB, istanbulA, istanbulB, orduA, orduB, marasA, rizeA } =
+    DataUtils;
 
   const options = [
     { value: "istanbulA", label: "İstanbul-Çekmeköy 2022-08-15" },
@@ -21,6 +22,8 @@ const DataLayer = () => {
     { value: "adanaB", label: "Adana-Yumartalık 2020-05-02" },
     { value: "orduA", label: "Ordu-İkizce 2022-06-13" },
     { value: "orduB", label: "Ordu-İkizce 2019-06-21" },
+    { value: "marasA", label: "Kahramanmaraş-Andırın 2022-05-05" },
+    { value: "rizeA", label: "Rize-Çayeli 2021-07-14" },
   ];
 
   const [selectedOptions, setSelectedOption] = useState<Options>(options[0]);
@@ -45,6 +48,12 @@ const DataLayer = () => {
         break;
       case "orduB":
         setSelectedCity(orduB._2019);
+        break;
+      case "marasA":
+        setSelectedCity(marasA._2022);
+        break;
+      case "rizeA":
+        setSelectedCity(rizeA._2022);
         break;
       default:
         setSelectedCity(istanbulA._2022);

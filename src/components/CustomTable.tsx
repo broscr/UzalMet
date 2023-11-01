@@ -4,6 +4,7 @@ import { Props } from "@/interfaces/Interfaces";
 import { Card, Table } from "react-bootstrap";
 import RainImg from "@/resources/yagis_siddeti.png";
 import Image from "next/image";
+import CorTable from "@/resources/cor_table.png";
 import { numberToDate } from "@/utils/Utils";
 
 type PropsIn = {
@@ -75,15 +76,8 @@ const CustomTable = ({ stationData }: PropsIn) => {
   const correlation = calculateCorrelation(correlationData);
 
   return (
-    <div className="container mt-5">
-      <Image
-        src={RainImg}
-        width={250}
-        height={200}
-        alt=""
-        className="d-flex float-end"
-      />
-      <Card>
+    <div className="container mt-5 d-flex">
+      <Card className="w-100">
         <Card.Header>
           <div className="d-flex justify-content-between">
             <div>
@@ -135,6 +129,10 @@ const CustomTable = ({ stationData }: PropsIn) => {
           </Table>
         </Card.Body>
       </Card>
+      <div className="">
+        <Image src={RainImg} width={250} height={200} alt="" className="mb-5" />
+        <Image src={CorTable} width={350} height={300} alt="" className="mb-5" />
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import Data from "@/utils/DataUtils";
 import { writeFile } from "@/utils/ServerUtils";
 
 export default function Home() {
-  // writeFile(Data.orduB._2019);
+  // writeFile(Data.rizeA._2022);
 
   return (
     <main>
