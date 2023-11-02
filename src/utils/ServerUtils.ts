@@ -74,3 +74,47 @@ export const writeFileDaily = (props: Props[]) => {
 
   fs.writeFileSync(`./src/resources/csv/All_Stations.csv`, dataMan, "utf8");
 };
+
+export const writeFileAll = (props: Props[]) => {
+  let dataMan = "";
+
+  const array: any = [];
+
+  props.forEach((i) => {
+    i.rain.forEach((it) => {
+      const tYts = i.lighting.filter((iti) => {
+        const itemDate = new Date(iti.DATATARIH);
+        const itemHour = itemDate.getHours();
+        return itemHour === new Date(numberToDate(it.DATATARIH)).getHours();
+      }).length;
+
+      if (it.TOPLAM_YAGIS != 0 || tYts != 0) {
+        array.push({
+          stationNo: i.no,
+          stationName: i.station,
+          stationCity: i.city,
+          date: i.date,
+          latitude: i.latitude,
+          longitude: i.longitude,
+          day: i.date,
+          hours: it.SAAT,
+          totalRain: it.TOPLAM_YAGIS.toFixed(1).replace(".", ","),
+          totalLighting: tYts,
+        });
+      }
+    });
+  });
+
+  const parser = new Parser();
+  dataMan = parser.parse(array);
+
+  try {
+    fs.writeFileSync(
+      `./src/resources/csv/all.csv`,
+      dataMan,
+      "utf8"
+    );
+  } catch (error) {
+    console.log("Exception => ", error);
+  }
+};
