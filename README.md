@@ -1,20 +1,26 @@
-## UZALMET 2023 Yıldırım Aktivitesi ve Şiddetli Yağışlar Arasındaki İlişkinin Analizi
+### UZALMET 2023 Lightning Activity and Heavy Rainfall Relationship Analysis
 
-ULUSLARARASI KATILIMLI
+**INTERNATIONAL PARTICIPATION**
 
-V. METEOROLOJİK UZAKTAN ALGILAMA SEMPOZYUMU
+**V. REMOTE SENSING IN METEOROLOGY SYMPOSIUM**
 
-14-17 KASIM 2023
+_November 14-17, 2023_
 
 ---
 
-2019 ile 2022 yılları arasında günlük yağış miktarı 76mm ve üzerinde olan istasyonlardan elde edilen saatlik veriler üzerinde gerçekleştirdiğimiz detaylı analizde, seçilen 8 istasyonun enlem ve boylam verileri belirlenmiş ve bu istasyonlardan alınan yağış verileri özel bir doğrulama sürecinden geçirilmiştir.
+**Türkçe:**
+
+2019 ile 2022 yılları arasında günlük yağış miktarı 76mm ve üzerinde olan istasyonlardan elde edilen saatlik veriler üzerinde gerçekleştirdiğimiz detaylı analizde, seçilen 10 istasyonun enlem ve boylam verileri belirlenmiş ve bu istasyonlardan alınan yağış verileri özel bir doğrulama sürecinden geçirilmiştir.
 
 Belirlenen istasyonların coğrafi konumları temel alınarak, 15km yarıçap içinde yer alan Yıldırım Takip Sistemi'nden elde edilen veriler indirilmiş, ardından bu veriler istasyonların konumlarına göre düzenlenmiştir. Elde edilen veri seti, json ve csv formatlarına dönüştürülerek, bu verilerin web sayfasında ve SPSS uygulamasında etkili bir şekilde kullanılabilmesi sağlanmıştır.
 
-Aşağıda, analiz sonuçlarına yönelik önemli veri noktalarını içeren tablo yer almaktadır:
+**English:**
 
-```plaintext
+In the detailed analysis conducted on hourly data obtained from stations with daily rainfall amounts of 76mm and above between 2019 and 2022, latitude and longitude data of selected 10 stations were determined, and the rainfall data obtained from these stations were subjected to a special verification process.
+
+Based on the geographical locations of the determined stations, data obtained from the Lightning Tracking System within a 15km radius were downloaded, and then these data were organized according to the locations of the stations. The resulting data set was converted to json and csv formats, ensuring effective use of these data on the website and in the SPSS application.
+
+```yml
 | stationNo |   stationName   |  stationCity  |    date    |  latitude   | longitude  | totalRain | totalLighting |
 |-----------|-----------------|---------------|------------|-------------|------------|-----------|---------------|
 |   18860   |      SARIÇAM      |     Adana     | 2020-05-01 |   36.7687   |  35.7903   |   112.2   |      188      |

@@ -1,3 +1,6 @@
+/**
+ * Interface representing the structure of rain data.
+ */
 export interface IRain {
   TOPLAM_YAGIS: number;
   YIL: number;
@@ -8,6 +11,9 @@ export interface IRain {
   ISTNO: number;
 }
 
+/**
+ * Interface representing the structure of lighting data.
+ */
 export interface ILighting {
   PIKAKIM: number;
   FLASHTIP: number;
@@ -17,6 +23,9 @@ export interface ILighting {
   LIGHTBOYLAM: number;
 }
 
+/**
+ * Type representing the properties used in your application.
+ */
 export type Props = {
   rain: IRain[];
   lighting: ILighting[];

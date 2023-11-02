@@ -20,6 +20,7 @@ import { Chart } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import CustomTable from "./CustomTable";
 
+// Register Chart.js plugins and scales
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -32,13 +33,22 @@ ChartJS.register(
   RadialLinearScale
 );
 
+/**
+ * PropsIn interface representing the input properties for the SeasonChart component.
+ */
 type PropsIn = {
   stationData: Props;
 };
 
+/**
+ * SeasonChart component displays a chart with rain and lightning data for a specific station.
+ * @param {PropsIn} props - Input properties for the component.
+ */
 const SeasonChart = ({ stationData }: PropsIn) => {
+  // State to toggle between chart and table view
   const [switchStat, setSwitchStat] = useState(false);
 
+  // Chart options configuration
   const options = {
     responsive: true,
     plugins: {
@@ -47,19 +57,8 @@ const SeasonChart = ({ stationData }: PropsIn) => {
       },
       title: {
         display: true,
-        text: `${stationData.date} ${stationData.station} ${stationData.city} 15 KM Yarıçap`,
+        text: `${stationData.date} ${stationData.station} ${stationData.city} Enlem: ${stationData.latitude} Boylam: ${stationData.longitude} 15 KM Yarıçap`,
       },
-      // tooltip: {
-      //   callbacks: {
-      //     label: (context: any) => {
-      //       const data = context.dataset.data[context.dataIndex];
-      //       return [
-      //         `Yıldırım ve Şimşek: ${data.r <= 100 ? data.r : "100+"}`,
-      //         `Gerçek Değer: ${data.r}`,
-      //       ];
-      //     },
-      //   },
-      // },
     },
     scales: {
       x: {
@@ -91,6 +90,7 @@ const SeasonChart = ({ stationData }: PropsIn) => {
     },
   };
 
+  // Chart data configuration
   const data = {
     datasets: [
       {
@@ -130,11 +130,11 @@ const SeasonChart = ({ stationData }: PropsIn) => {
     ],
   };
 
-  useEffect(() => {}, []);
-
+  // Render the SeasonChart component
   return (
     <>
       <div>
+        {/* Toggle switch for chart and table view */}
         <Form.Check
           type="switch"
           id="viewType"
@@ -143,6 +143,7 @@ const SeasonChart = ({ stationData }: PropsIn) => {
           checked={switchStat}
           onChange={() => setSwitchStat(!switchStat)}
         />
+        {/* Chart component with conditional visibility */}
         <Chart
           options={options}
           data={data}
@@ -150,6 +151,7 @@ const SeasonChart = ({ stationData }: PropsIn) => {
           redraw
         />
       </div>
+      {/* Conditional rendering of the table component */}
       {switchStat && <CustomTable stationData={stationData} />}
     </>
   );

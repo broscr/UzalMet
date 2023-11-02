@@ -1,24 +1,41 @@
+/**
+ * WeatherData class represents a collection of weather data for various cities and years.
+ * Each city has different stations, and each station has rain and lighting data along with other details.
+ */
+
+// Importing weather data for Adana in 2020 and 2021
 import Adana2020_17979_Rain from "@/resources/adana/2020Saatlik.json";
 import Adana2020_17979_Yts from "@/resources/adana/2020Yts.json";
 import Adana2021_18862_Rain from "@/resources/adana/2021Saatlik.json";
 import Adana2021_18862_Yts from "@/resources/adana/2021Yts.json";
 import Adana2020_18860_Rain from "@/resources/adana/2020Saatlik_18860.json";
 import Adana2020_18860_Yts from "@/resources/adana/2020Yts_18860.json";
+
+// Importing weather data for Istanbul in 2022
 import Istanbul2022_18397_Rain from "@/resources/istanbul/Saatlik_2022_18397.json";
 import Istanbul2022_18397_Yts from "@/resources/istanbul//Yts_2022_18397.json";
 import Istanbul2022_18980_Rain from "@/resources/istanbul/Saatlik_2022_18980.json";
 import Istanbul2022_18980_Yts from "@/resources/istanbul/Yts_2022_18980.json";
+
+// Importing weather data for Ordu in 2022 and 2019
 import Ordu2022_18529_Rain from "@/resources/ordu/2022Saatlik.json";
 import Ordu2022_18529_Yts from "@/resources/ordu/2022Yts.json";
 import Ordu2019_18529_Rain from "@/resources/ordu/2019Saatlik.json";
 import Ordu2019_18529_Yts from "@/resources/ordu/2019Yts.json";
+
+// Importing weather data for Rize in 2021 and 2020
 import Rize2021_18905_Rain from "@/resources/rize/Saatlik_2021.json";
 import Rize2021_18905_Yts from "@/resources/rize/Yts_20221.json";
 import Rize2020_18905_Rain from "@/resources/rize/Saatlik_2020.json";
 import Rize2020_18905_Yts from "@/resources/rize/Yts_2020.json";
+
+// Importing weather data for Giresun in 2020
 import Giresun2020_18223_Rain from "@/resources/giresun/Saatlik_2020.json";
 import Giresun2020_18223_Yts from "@/resources/giresun/Yts_2020.json";
 
+/**
+ * Data object containing weather information for different cities, stations, and years.
+ */
 const Data = {
   adanaA: {
     _2021: {
@@ -42,6 +59,8 @@ const Data = {
       city: "Adana",
       date: "2020-05-02",
       no: 17979,
+      r: 0.582,
+      p: 0.061,
     },
   },
   adanaC: {
