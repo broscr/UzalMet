@@ -34,9 +34,43 @@ export const writeFile = (props: Props) => {
   const parser = new Parser();
   dataMan = parser.parse(array);
 
-  fs.writeFileSync(
-    `./src/resources/csv/${props.date}_${props.no}.csv`,
-    dataMan,
-    "utf8"
-  );
+  try {
+    fs.writeFileSync(
+      `./src/resources/csv/${props.date}_${props.no}.csv`,
+      dataMan,
+      "utf8"
+    );
+  } catch (error) {
+    console.log("Exception => ", error);
+  }
+};
+
+export const writeFileDaily = (props: Props[]) => {
+  let dataMan = "";
+
+  let dataPush: any[] = [];
+
+  props.forEach((i) => {
+    const dailyRain = i.rain.reduce((acc, obj) => acc + obj.TOPLAM_YAGIS, 0);
+
+    const dailyLighting = i.lighting.length;
+
+    const result = {
+      stationNo: i.no,
+      stationName: i.station,
+      stationCity: i.city,
+      date: i.date,
+      latitude: i.latitude,
+      longitude: i.longitude,
+      totalRain: dailyRain,
+      totalLighting: dailyLighting,
+    };
+
+    dataPush.push(result);
+  });
+
+  const parser = new Parser();
+  dataMan = parser.parse(dataPush);
+
+  fs.writeFileSync(`./src/resources/csv/All_Stations.csv`, dataMan, "utf8");
 };
