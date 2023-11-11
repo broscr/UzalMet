@@ -147,7 +147,7 @@ const CustomTable = ({ stationData }: PropsIn) => {
             bordered
             hover
             size="sm"
-            variant="dark"
+            variant="light"
             responsive
             className="text-center"
           >
