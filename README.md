@@ -1,24 +1,64 @@
-### UZALMET 2023 Lightning Activity and Heavy Rainfall Relationship Analysis
+### UZALMET 2023 Yıldırım Aktivitesi ve Şiddetli Yağışlar Arasındaki İlişkinin Analizi (UZALMET 2023 Lightning Activity and Heavy Rainfall Relationship Analysis)
 
-**INTERNATIONAL PARTICIPATION**
+ULUSLARARASI KATILIM (INTERNATIONAL PARTICIPATION)
 
-**V. REMOTE SENSING IN METEOROLOGY SYMPOSIUM**
+V. METEOROLOJİ UZAKTAN ALGILAMA SEMPOZYUMU (V. REMOTE SENSING IN METEOROLOGY SYMPOSIUM)
 
-_November 14-17, 2023_
+14-17 Kasım 2023 (November 14-17, 2023)
 
 ---
 
 **Türkçe:**
 
-2019 ile 2022 yılları arasında günlük yağış miktarı 76mm ve üzerinde olan istasyonlardan elde edilen saatlik veriler üzerinde gerçekleştirdiğimiz detaylı analizde, seçilen 10 istasyonun enlem ve boylam verileri belirlenmiş ve bu istasyonlardan alınan yağış verileri özel bir doğrulama sürecinden geçirilmiştir.
+Bu çalışma, yıldırım aktivitesi ile şiddetli yağışlar arasındaki ilişkiyi anlamak ve bu bilgiyi afet yönetimi ve iklim değişikliği ile mücadelede kullanmak amacını taşımaktadır.
 
-Belirlenen istasyonların coğrafi konumları temel alınarak, 15km yarıçap içinde yer alan Yıldırım Takip Sistemi'nden elde edilen veriler indirilmiş, ardından bu veriler istasyonların konumlarına göre düzenlenmiştir. Elde edilen veri seti, json ve csv formatlarına dönüştürülerek, bu verilerin web sayfasında ve SPSS uygulamasında etkili bir şekilde kullanılabilmesi sağlanmıştır.
+YÖNTEM
 
-**English:**
+Veri Toplama
 
-In the detailed analysis conducted on hourly data obtained from stations with daily rainfall amounts of 76mm and above between 2019 and 2022, latitude and longitude data of selected 10 stations were determined, and the rainfall data obtained from these stations were subjected to a special verification process.
+- Veri kaynağı olarak, Türkiye genelinde bulunan 10 adet Meteoroloji İstasyonu baz alınmıştır. 
+- Otomatik Meteorolojik Gözlem İstasyonu (OMGİ) aracılığı ile yağış verileri, Yıldırım Tespit ve Takip Sistemi (YTTS) aracılığıyla istasyonların, 15 km yarıçaplı bir daire içinde gerçekleşen yıldırım verileri toplanmıştır.
+- Bu veriler, 2019 ile 2022 yılları arasında Mayıs - Ağustos ayları süresince yoğun yıldırım aktivitesinin yaşandığı dönemleri kapsamaktadır.
+- Meteorolojik hadiselerin şiddet sınıflandırmasına göre, bir yağışın 'şiddetli yağış' olarak kabul edilmesi için 12 saatlik periyotta 76-100 mm arasında bir yağış miktarına ulaşması gerekmektedir. Bu nedenle, çalışmamızda verilerimiz, 24 saatlik yağış verisinin, 12 saatlik periyodunda şiddetli yağış alan günler olarak değerlendirilmiştir.
+---
 
-Based on the geographical locations of the determined stations, data obtained from the Lightning Tracking System within a 15km radius were downloaded, and then these data were organized according to the locations of the stations. The resulting data set was converted to json and csv formats, ensuring effective use of these data on the website and in the SPSS application.
+Veri Entegrasyonu
+
+Meteoroloji istasyonlarından elde edilen saatlik yağış verileri, Yıldırım Tespit ve Takip Sistemi (YTTS) verileriyle coğrafi konumlarına göre eşleştirilerek analiz için uygun hale getirilmiştir. Bu veriler .json ve .csv formatlarına dönüştürülerek, SPSS uygulamasında kullanılmak üzere düzenlenmiştir. SPSS (Statistical Package for the Social Sciences), araştırmacıların verileri analiz etmelerine, istatistiksel sonuçlar üretmelerine ve grafikler oluşturmalarına yardımcı olan güçlü bir istatistiksel analiz yazılımıdır.
+
+Veri analizi aşamasında, iki veya daha fazla değişken arasındaki ilişkiyi ölçen bir istatistiksel yöntem olan Korelasyon Analizi kullanılmıştır. Korelasyon, değişkenler arasındaki ilişkinin gücünü ve yönünü ölçmek için kullanılır. En yaygın korelasyon  yöntemleri: Pearson ve Spearman Korelasyonudur. 
+
+Çalışmada, Pearson Korelasyon Analizi tercih edilmiş olup, incelenen tüm istasyonlar için ayrı ayrı bu hesaplamalar yapılmıştır.
+
+Bu çalışma, 10 farklı insansız ölçüm yapan meteoroloji istasyonunda yıldırım aktivitesi ve şiddetli yağışlar arasındaki korelasyonu incelemiştir. Elde edilen sonuçlar, bu iki değişken arasında önemli ölçüde pozitif ilişki olduğunu göstermektedir. Özellikle, Çekmeköy/Ömerli, Sarıçam ve Çayeli oldukça yüksek korelasyon katsayılarına sahiptir.
+Bu sonuçlar, meteorolojik olayların anlaşılması ve tahmin edilmesi açısından önemlidir. Şiddetli yağışlar, yıldırım aktivitesi ile ilişkilendirilerek daha iyi izlenebilir ve anlaşılabilir. Ayrıca, bu sonuçlar, afet yönetimi ve halkın uyarılması için kullanılabilir.
+
+---
+
+**English**
+
+This study aims to understand the relationship between lightning activity and heavy rainfall and use this information in disaster management and climate change mitigation.
+
+METHOD
+
+Data Collection
+
+As the data source, 10 Meteorology Stations across Turkey have been considered.
+Rainfall data through Automatic Meteorological Observation Stations (OMGİ) and lightning data within a 15 km radius circle through the Lightning Detection and Tracking System (YTTS) at the stations were collected.
+These data cover periods of intense lightning activity from May to August between 2019 and 2022.
+Based on the intensity classification of meteorological events, for a rainfall to be considered 'heavy rain,' it needs to reach a rainfall amount between 76-100 mm in a 12-hour period. Therefore, our data in this study are evaluated as days with heavy rainfall in a 12-hour period based on 24-hour rainfall data.
+
+Data Integration
+
+Hourly rainfall data obtained from meteorological stations were matched with Lightning Detection and Tracking System (YTTS) data based on their geographical locations and prepared for analysis. These data were transformed into .json and .csv formats for use in the SPSS application. SPSS (Statistical Package for the Social Sciences) is a powerful statistical analysis software that helps researchers analyze data, produce statistical results, and create graphs.
+
+In the data analysis stage, Correlation Analysis, a statistical method measuring the relationship between two or more variables, was used. Correlation is used to measure the strength and direction of the relationship between variables. The most common correlation methods are Pearson and Spearman Correlation.
+
+In this study, Pearson Correlation Analysis was preferred, and these calculations were made separately for all the stations under investigation.
+
+This study examined the correlation between lightning activity and heavy rainfall in 10 different unmanned measurement meteorology stations. The results obtained show a significant positive relationship between these two variables. In particular, Çekmeköy/Ömerli, Sarıçam, and Çayeli have very high correlation coefficients.
+These results are crucial for understanding and predicting meteorological events. Heavy rainfall can be better monitored and understood when correlated with lightning activity. Additionally, these results can be used for disaster management and public warning.
+
 
 ```yml
 | stationNo |   stationName   |  stationCity  |    date    |  latitude   | longitude  | totalRain | totalLighting |
