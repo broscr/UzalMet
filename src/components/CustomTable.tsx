@@ -92,14 +92,6 @@ const CustomTable = ({ stationData }: PropsIn) => {
     const correlation =
       numerator / Math.sqrt(denominatorRain * denominatorLightning);
 
-    // Calculate degrees of freedom for t-distribution
-    const degreesOfFreedom = n - 2;
-
-    // Calculate t statistic for two-tailed test
-    const tStatistic =
-      correlation *
-      Math.sqrt(degreesOfFreedom / (1 - Math.pow(correlation, 2)));
-
     // Set state variables and update correlation status
     setR(correlation);
     setCorrelationStatus(checkCorrelationStatus(correlation));

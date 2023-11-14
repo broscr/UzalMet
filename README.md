@@ -16,17 +16,18 @@ YÖNTEM
 
 Veri Toplama
 
-- Veri kaynağı olarak, Türkiye genelinde bulunan 10 adet Meteoroloji İstasyonu baz alınmıştır. 
+- Veri kaynağı olarak, Türkiye genelinde bulunan 10 adet Meteoroloji İstasyonu baz alınmıştır.
 - Otomatik Meteorolojik Gözlem İstasyonu (OMGİ) aracılığı ile yağış verileri, Yıldırım Tespit ve Takip Sistemi (YTTS) aracılığıyla istasyonların, 15 km yarıçaplı bir daire içinde gerçekleşen yıldırım verileri toplanmıştır.
 - Bu veriler, 2019 ile 2022 yılları arasında Mayıs - Ağustos ayları süresince yoğun yıldırım aktivitesinin yaşandığı dönemleri kapsamaktadır.
 - Meteorolojik hadiselerin şiddet sınıflandırmasına göre, bir yağışın 'şiddetli yağış' olarak kabul edilmesi için 12 saatlik periyotta 76-100 mm arasında bir yağış miktarına ulaşması gerekmektedir. Bu nedenle, çalışmamızda verilerimiz, 24 saatlik yağış verisinin, 12 saatlik periyodunda şiddetli yağış alan günler olarak değerlendirilmiştir.
+
 ---
 
 Veri Entegrasyonu
 
 Meteoroloji istasyonlarından elde edilen saatlik yağış verileri, Yıldırım Tespit ve Takip Sistemi (YTTS) verileriyle coğrafi konumlarına göre eşleştirilerek analiz için uygun hale getirilmiştir. Bu veriler .json ve .csv formatlarına dönüştürülerek, SPSS uygulamasında kullanılmak üzere düzenlenmiştir. SPSS (Statistical Package for the Social Sciences), araştırmacıların verileri analiz etmelerine, istatistiksel sonuçlar üretmelerine ve grafikler oluşturmalarına yardımcı olan güçlü bir istatistiksel analiz yazılımıdır.
 
-Veri analizi aşamasında, iki veya daha fazla değişken arasındaki ilişkiyi ölçen bir istatistiksel yöntem olan Korelasyon Analizi kullanılmıştır. Korelasyon, değişkenler arasındaki ilişkinin gücünü ve yönünü ölçmek için kullanılır. En yaygın korelasyon  yöntemleri: Pearson ve Spearman Korelasyonudur. 
+Veri analizi aşamasında, iki veya daha fazla değişken arasındaki ilişkiyi ölçen bir istatistiksel yöntem olan Korelasyon Analizi kullanılmıştır. Korelasyon, değişkenler arasındaki ilişkinin gücünü ve yönünü ölçmek için kullanılır. En yaygın korelasyon yöntemleri: Pearson ve Spearman Korelasyonudur.
 
 Çalışmada, Pearson Korelasyon Analizi tercih edilmiş olup, incelenen tüm istasyonlar için ayrı ayrı bu hesaplamalar yapılmıştır.
 
@@ -59,7 +60,6 @@ In this study, Pearson Correlation Analysis was preferred, and these calculation
 This study examined the correlation between lightning activity and heavy rainfall in 10 different unmanned measurement meteorology stations. The results obtained show a significant positive relationship between these two variables. In particular, Çekmeköy/Ömerli, Sarıçam, and Çayeli have very high correlation coefficients.
 These results are crucial for understanding and predicting meteorological events. Heavy rainfall can be better monitored and understood when correlated with lightning activity. Additionally, these results can be used for disaster management and public warning.
 
-
 ```yml
 | stationNo |   stationName   |  stationCity  |    date    |  latitude   | longitude  | totalRain | totalLighting |
 |-----------|-----------------|---------------|------------|-------------|------------|-----------|---------------|
@@ -90,4 +90,31 @@ First, run the development server:
 npm install
 
 npm run dev
+```
+
+## Add Data
+
+```bash
+- Add rainfall and lightning data resources => for example: /resources/city_name/rain_data.json /resources/city_name/lightning.json
+- Import data into DataUtils.ts => for example:
+    * import CityName_Rain from "@/resources/city_name/rain.json";
+    * import CityName_Yts from "@/resources/city_name/lightning.json";
+- Add imported data to const Data => for example:
+    const Data = {
+        cityName: {
+            _2021: {
+                rain: CityName_Rain,
+                lightning: CityName_Yts,
+                latitude: 00.0000,
+                longitude: 00.0000,
+                station: "Station Name",
+                city: "City Name",
+                date: "2023-11-13",
+                no: 19999
+            }
+        }
+    };
+- Add DataLayer to const options in DataLayer.ts => for example:
+    { value: "cityName", label: "City Name and Station - Date " }
+
 ```
